@@ -1,15 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
+import React, {useState} from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Dimensions } from 'react-native';
 import Button from './components/Button';
 import OperatorButton from './components/OperatorButton';
 
 const screen = Dimensions.get("window");
 export default function App() {
+  const [display, setDisplay] = useState(0)
   return (
     <View style={styles.container}>
       <SafeAreaView>
         <View style={styles.screen}>
-          <Text style={styles.screenText}>0</Text>
+          <Text style={styles.screenText}>{display}</Text>
         </View>
         <View style={styles.row}>
           <OperatorButton operator="C"/>
