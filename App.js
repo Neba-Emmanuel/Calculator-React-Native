@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import { SafeAreaView, StyleSheet, Text, View, Dimensions, TextInput} from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Dimensions, StatusBar} from 'react-native';
 import Button from './components/Button';
 import OperatorButton from './components/OperatorButton';
 
@@ -23,10 +23,12 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, {result: ''});
 
   return (
+
     <View style={styles.container}>
+      <StatusBar/>
       <SafeAreaView>
         <View style={styles.screen}>
-          <Text style={styles.screenText}>{state.result}</Text>
+          <Text style={styles.screenText}>{state.result == '' ? '0' : state.result}</Text>
         </View>
         <View style={styles.row}>
           <OperatorButton operator="C" onPress={() => dispatch({type: 'clear'})}/>
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   },
   screen:{
     width:  screen.width,
-    height: screen.width / 1.2,
+    height: screen.width / 1.3,
     backgroundColor: '#333333',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
